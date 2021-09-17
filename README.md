@@ -1,12 +1,34 @@
 # Javascript Objects
+```
+Javascript Object = {
+  properties
+  method
+  ...
+}
+```
+```
+jsobj.properties
+jsobj['properties']
 
+jsobj.method()
+jsobj['method']()
+```
+```
+jsobj = {
+  color: 'white'
+  shirt : function(){
+    return `this['color']`   // this.color
+  }
+}
+```
+```
 var person = {
   name:'John',
   favColor:'Green',
   height:183,
   age:31
 }
-
+```
 person.age 
 person['age']
 
@@ -147,7 +169,167 @@ function printTime() {
 setInterval(printTime, 1000);
 ```
 
+# Object Oriented 
+* class and constructor
 
+```
+class obj  {
+  constructor(param):
+    this.param = param;
+}
+```
 
+* instantiate object 
 
+```
+let obj_variable = new obj(param);
+```
 
+* adding methods to class 
+
+```
+class obj  {
+  constructor(param):
+    this.param = param;
+    
+  method(){
+    return this.param
+  }
+}
+```
+
+* getters 
+
+value of property is computed 
+value is not stored or updated
+
+```
+class Pet {
+    // constructor method
+    constructor(animal,age,breed,sound) {
+        this.animal = animal;
+        this.age = age;
+        this.breed = breed;
+        this.sound = sound;
+    }
+
+    // dynamic value
+
+    get activity(){
+        const today = new Date();
+        const hour = today.getHours();
+        if(hour > 8 && hour <= 20){
+            return 'playing';
+        } else {
+            return 'sleeping';
+        }
+    }
+
+    // method
+
+    speak(){
+        console.log(this.sound);
+    }
+
+}
+
+const ernie = new Pet('dog',1,'pug');
+console.log(ernie.activity);
+```
+
+```
+class Student {
+    constructor(gpa, credits){
+        this.gpa = gpa;
+        this.credits = credits;
+    }
+  
+    get level(){
+      if(this.credits > 90) {
+        return 'Senior';
+      } else if(this.credits >= 61 || this.credits <= 90){
+        return 'Junior';
+      } else if(this.credits >= 31 || this.credits <= 60){
+        return 'Sophomore';
+      } else if(this.credits <= 30 ){
+        return 'Freshman';
+      }
+    }
+
+    stringGPA() {
+        return this.gpa.toString();
+    }
+}
+
+const student = new Student(3.9);
+```
+
+* setter methods
+
+receive value and perform logic 
+update properties
+store properties
+
+```
+get owner(){
+  return this._owner;
+}
+
+set owner(owner){
+  this._owner = owner;
+  console.log(`setter called: ${owner}`);
+}
+
+obj_variable.owner = 'Ashley';
+console.log(obj_variable.owner)
+```
+
+```
+class Pet {
+    // constructor method
+    constructor(animal,age,breed,sound) {
+        this.animal = animal;
+        this.age = age;
+        this.breed = breed;
+        this.sound = sound;
+    }
+
+    // dynamic value
+
+    get activity(){
+        const today = new Date();
+        const hour = today.getHours();
+        if(hour > 8 && hour <= 20){
+            return 'playing';
+        } else {
+            return 'sleeping';
+        }
+    }
+
+    get owner(){
+        return this._owner;
+    }
+
+    set owner(owner){
+        this._owner = owner;
+        console.log(`setter called: ${owner}`);
+    }
+
+    // method
+
+    speak(){
+        console.log(this.sound);
+    }
+
+}
+
+const ernie = new Pet('dog',1,'pug');
+const vera = new Pet('dog', 8, 'border collie');
+
+console.log(ernie);
+
+console.log(ernie.activity);
+
+ernie.owner = 'Ashley';
+console.log(ernie.owner);
+```
