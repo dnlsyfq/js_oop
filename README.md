@@ -198,6 +198,23 @@ class obj  {
 }
 ```
 
+```
+class User {
+    constructor(email, username, birthday) {
+        this.email = email;
+        this.username = username;
+        this.birthday = birthday;
+    }
+
+    changeUsername(username) {
+        this.username = username;
+    }
+}
+
+user1.changeUsername(“TreehouseStudent2”);
+user1['changeUsername'](“TreehouseStudent2”);
+```
+
 * getters 
 
 value of property is computed 
@@ -332,4 +349,130 @@ console.log(ernie.activity);
 
 ernie.owner = 'Ashley';
 console.log(ernie.owner);
+```
+
+```
+class Student {
+    constructor(gpa, credits){
+        this.gpa = gpa;
+        this.credits = credits;
+    }
+
+    stringGPA() {
+        return this.gpa.toString();
+    }
+
+    get level() {
+        if (this.credits > 90 ) {
+            return 'Senior';
+        } else if (this.credits > 60) {
+            return 'Junior';
+        } else if (this.credits > 30) {
+            return 'Sophomore';
+        } else {
+            return 'Freshman';
+        }
+    }
+
+    get major(){
+        return this._major;
+    }
+
+    set major(major){
+
+        if(this.level === 'Junior' || this.level === 'Senior'){
+            this._major = major;
+        } else if(this.level === 'Freshman' || this.level === 'Sophomore'){
+            this._major = 'None';
+        }
+    }
+}
+
+var student = new Student(3.9, 60);
+```
+
+* object interaction
+
+```
+class Pet {
+    // constructor method
+    constructor(animal,age,breed,sound) {
+        this.animal = animal;
+        this.age = age;
+        this.breed = breed;
+        this.sound = sound;
+    }
+
+    // dynamic value
+
+    get activity(){
+        const today = new Date();
+        const hour = today.getHours();
+        if(hour > 8 && hour <= 20){
+            return 'playing';
+        } else {
+            return 'sleeping';
+        }
+    }
+
+    get owner(){
+        return this._owner;
+    }
+
+    set owner(owner){
+        this._owner = owner;
+        console.log(`setter called: ${owner}`);
+    }
+
+    // method
+
+    speak(){
+        console.log(this.sound);
+    }
+
+}
+
+class Owner{
+    constructor(name,address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    set phone(phone){
+        const phoneNormalized = phone.replace(/[^0-9]/g,'');
+        this._phone = phoneNormalized;
+    }
+
+    get phone(){
+        return this._phone;
+    }
+}
+
+const ernie = new Pet('dog',1,'pug');
+ernie.owner = new Owner('Ashley','123 Main Street');
+ernie.owner.phone = '(555) 555-5555';
+
+console.log(ernie.owner);
+console.log(ernie.owner.name);
+console.log(ernie.owner.phone);
+```
+
+```
+set radius(r) {
+    this._radius = r;
+    this.area = 3.14 * Math.pow(r, 2);
+    this.circumference = 2 * 3.14 * r;
+}
+
+get radius() {
+    return this._radius;
+}
+
+
+
+circ.radius = 10;
+console.log(circ.area) //output: 314
+console.log(circ.circumference) //output: 62.8
+circ.radius
+
 ```
