@@ -476,3 +476,28 @@ console.log(circ.circumference) //output: 62.8
 circ.radius
 
 ```
+
+### Constructor
+
+```
+class Car {
+  constructor(doors, engine, color){
+    this.doors = doors;
+    this.engine = engine;
+    this.color = color;
+  }
+}
+
+const cx5 = new Car(4,'V6','grey');
+```
+
+* super
+calls the methods of a parent class
+  
+```
+class SUV extends Car{
+  constructor(doors,engine,color,carStats){
+    super(doors,engine,color,carStats)
+  }
+}
+```
