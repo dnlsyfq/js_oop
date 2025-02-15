@@ -36,9 +36,174 @@ person['age']
 
 person.name.length
 
+
+### loop object
+```
+  <body>
+    <main></main>
+    <script src="js/for-in.js"></script>
+  </body>
+```
+```
+const person = {
+  name: 'Edward',
+  nickname: 'Duke',
+  city: 'New York',
+  age: 37,
+  isStudent: true,
+  skills: ['JavaScript', 'HTML', 'CSS']
+};
+
+for(let prop in person){
+  console.log(`${prop}: ${person[prop]}`);
+}
+```
+
+
+
+
 ### object methods
 
 person.methodName()
+
+```
+const person = {
+  name: 'Reggie',
+  role: 'Software developer',
+  skills: ['JavaScript', 'HTML', 'CSS'],
+  isTeacher: true
+};
+
+Object.keys(person);
+Object.keys(person).length
+Object.values(person)
+```
+
+* combine object
+```
+const name = {
+  firstName: 'Reggie',
+  lastName: 'Williams',
+};
+
+const role = {
+  title: 'Software developer',
+  skills: ['JavaScript', 'HTML', 'CSS'],
+  isTeacher: true
+};
+
+// merge `name` and `role` into a `person` object
+const person = {  
+  ...name,
+  ...role
+};
+console.log(person);
+
+```
+
+* convert array of array to array of obj
+```
+//const questions = [
+//  ['How many planets are in the Solar System?', '8'],
+//  ['How many continents are there?', '7'],
+//  ['How many legs does an insect have?', '6'],
+//  ['What year was JavaScript created?', '1995']
+//];
+
+
+const questions =  [
+  {
+    question:'How many planets are in the Solar System?',
+    answer:'8'
+  },
+  {
+    question:'How many continents are there?',
+    answer:'7'
+  },
+  {
+    question:'How many legs does an insect have?',
+    answer:'6'
+  },
+  {
+    question:'What year was JavaScript created?',
+    answer:'1995'
+  }
+]
+```
+
+### array of obj & for loops
+
+```
+  <body>
+    <h1>Pet Directory</h1>
+    <main>
+<!--
+      <h2>Joey</h2>
+      <h3>Dog | Australian Shepherd</h3>
+      <p>Age: 8</p>
+      <img src="img/aussie.jpg" alt="Australian Shepherd">
+-->
+    </main>
+    <script src="js/pets.js"></script>
+  </body>
+```
+
+```
+/*
+  Create an array of 'pet' objects.
+  Each object should have the following properties: 
+  name, type, breed, age, and photo
+*/
+
+const pets = [
+  {
+    name:"Joey",
+    type:"Dog",
+    breed:"Australian Shepherd",
+    age: 8,
+    photo: "/img/aussie.jpg"
+  },
+  {
+    name:"Patches",
+    type:"Cat",
+    breed:"Tabby",
+    age: 1,
+    photo: "/img/tabby.jpg"
+  },
+  {
+    name:"Pugsley",
+    type:"Dog",
+    breed:"Pug",
+    age: 6,
+    photo: "/img/pug.jpg"    
+  },
+  {
+    name:"Simba",
+    type:"Cat",
+    breed:"Persian",
+    age: 5,
+    photo: "/img/persian.jpg"        
+  }
+]
+
+const main = document.querySelector('main');
+let html = '';
+
+for(let i = 0; i < pets.length; i++){
+  html += `
+  <div>
+    <h2>${ pets[i].name }</h2>
+    <h3>${ pets[i].type} | ${ pets[i].breed }</h3>
+    <p>Age: ${ pets[i].age }</p>
+    <img src=${ pets[i].photo }>
+  </div>
+`
+}
+html += `</main>`
+
+main.innerHTML = html
+
+```
 
 ### object constructor
 
