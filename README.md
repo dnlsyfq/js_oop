@@ -186,9 +186,9 @@ const pets = [
   }
 ]
 
+// METHOD 1
 const main = document.querySelector('main');
 let html = '';
-
 for(let i = 0; i < pets.length; i++){
   html += `
   <div>
@@ -202,6 +202,19 @@ for(let i = 0; i < pets.length; i++){
 html += `</main>`
 
 main.innerHTML = html
+
+// METHOD 2
+let html = '';
+for(let i = 0; i < pets.length; i++){
+  html += `
+    <h2>${ pets[i].name }</h2>
+    <h3>${ pets[i].type} | ${ pets[i].breed }</h3>
+    <p>Age: ${ pets[i].age }</p>
+    <img src=${ pets[i].photo }>
+`;
+}
+
+document.querySelector('main').insertAdjacentHTML('beforeend',html);
 
 ```
 
